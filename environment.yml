@@ -1,28 +1,86 @@
-name: gslam
+name: gslam-jetson
 channels:
   - pytorch
   - nvidia
-  - nvidia/label/cuda-12.1.0
   - conda-forge
   - defaults
 dependencies:
-  - python=3.10
-  - faiss-gpu=1.8.0
-  - cuda-toolkit=12.1
-  - pytorch=2.1.2
-  - pytorch-cuda=12.1 
-  - torchvision=0.16.2
+  - python=3.8
   - pip
+  
+  # PyTorch ecosystem - CUDA 12.2 compatible
+  - pytorch=2.1.0
+  - torchvision=0.18.0
+  - torchaudio=2.1.0
+  - pytorch-cuda=12.1
+  
+  # Core scientific computing
+  - numpy=1.24.3
+  - scipy=1.10.1
+  - opencv=4.8.0
+  - pillow=10.0.1
+  
+  # 3D processing and visualization
+  - matplotlib=3.7.2
+  - plotly=5.17.0
+  - imageio=2.31.1
+  - imageio-ffmpeg=0.4.9
+  - tqdm=4.66.1
+  
+  # Data handling
+  - pandas=2.0.3
+  - pyyaml=6.0.1
+  - h5py=3.9.0
+  
+  # Development tools
+  - ipython=8.15.0
+  - jupyter=1.0.0
+  - git
+  
+  # CUDA and GPU support
+  - cudatoolkit=12.2
+  - nvidia-ml-py
+  
+  # Dependencies for Jetson Orin
   - pip:
-      - open3d==0.18.0
-      - wandb
-      - trimesh
-      - pytorch_msssim
-      - torchmetrics
-      - tqdm
-      - imageio
-      - opencv-python
-      - plyfile
-      - git+https://github.com/eriksandstroem/evaluate_3d_reconstruction_lib.git@9b3cc08be5440db9c375cc21e3bd65bb4a337db7
-      - git+https://github.com/VladimirYugay/simple-knn.git@c7e51a06a4cd84c25e769fee29ab391fe5d5ff8d
-      - git+https://github.com/VladimirYugay/gaussian_rasterizer.git@9c40173fcc8d9b16778a1a8040295bc2f9ebf129
+    # 3D processing
+    - open3d==0.17.0
+    - trimesh==3.23.5
+    - plyfile==1.0.1
+    - 
+    # SLAM specific
+    - lpips==0.1.4
+    - kornia==0.7.0
+    - roma==1.4.1
+    - diff-gaussian-rasterization
+    - simple-knn
+    
+    # Jetson utilities
+    - jetson-stats==4.2.7
+    - jtop
+    - psutil==5.9.5
+    
+    # TensorRT for inference optimization (Jetson specific)
+    - tensorrt==8.6.1
+    - pycuda==2022.2.2
+    
+    # Image processing
+    - scikit-image==0.21.0
+    - albumentations==1.3.1
+    
+    # Logging and monitoring
+    - wandb==0.15.12
+    - tensorboard==2.14.0
+    
+    # Additional utilities
+    - rich==13.5.2
+    - typer==0.9.0
+    - natsort==8.4.0
+    
+    # Memory profiling for optimization
+    - memory-profiler==0.61.0
+    - pympler==0.9
+    
+    # Configuration management
+    - hydra-core==1.3.2
+    - omegaconf==2.3.0
